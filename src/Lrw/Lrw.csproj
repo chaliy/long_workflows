@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractWorkflow.cs" />
-    <Compile Include="IWorkflowRegistry.cs" />
+    <Compile Include="IWorkflow.cs" />
+    <Compile Include="IWorkflowService.cs" />
+    <Compile Include="IWorkflowStateStore.cs" />
+    <Compile Include="MemoryWrorkflowStateStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkflowRegistry.cs" />
+    <Compile Include="WorkflowService.cs" />
     <Compile Include="Conventions.cs" />
     <Compile Include="WorkflowState.cs" />
   </ItemGroup>

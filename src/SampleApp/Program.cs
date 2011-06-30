@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿using System;
 using Lrw;
 
 namespace SampleApp
@@ -7,22 +7,32 @@ namespace SampleApp
     {
         static void Main(string[] args)
         {
-            var reg = new WorkflowRegistry(new Conventions
-                                               {
-                                                   
-                                               });
+            var reg = new WorkflowService();
 
-            var workflow = reg.GetWorkflow<PingGoogleForewer>("PingGoogleForewer");
+            Session1(reg);
+            Session2(reg);
+        }
 
-            workflow.Next();
+        private static void Session1(WorkflowService reg)
+        {
+            reg.Run<PingForewer>("PingForewer");
+            reg.Run<PingForewer>("PingForewer");
+        }
+
+        private static void Session2(WorkflowService reg)
+        {
+            reg.Run<PingForewer>("PingForewer");
         }
     }
 
-    public class PingGoogleForewer : AbstractWorkflow
+    public class PingForewer : IWorkflow
     {
-        protected override void ProcessNext()
+        public int Counter { get; set; }
+        
+        public void Next()
         {
-            new WebClient().DownloadString("http://www.google.com.ua");
+            Counter++;
+            Console.WriteLine("Ping #{0}", Counter);
         }
     }
 }
