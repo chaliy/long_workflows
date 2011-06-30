@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Lrw
@@ -17,13 +18,13 @@ namespace Lrw
             get { return _conventions; }
         }
 
-        public void Run<T>(string key)
+        public void Run<T>(string key, Action<T> exe)
         {
             var instance = (T)_conventions.CreateInstance(typeof(T));
 
             RetrieveWorkflow(key, instance);
 
-            _conventions.InvokeNext(instance);
+            exe(instance);
 
             StoreWorkflow(key, instance);
         }

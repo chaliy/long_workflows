@@ -1,13 +1,10 @@
-﻿using Lrw;
-
-
-namespace Tests.Stubs
+﻿namespace Tests.Stubs
 {
-    public class SimpleCounterWorkflow : IWorkflow
+    public class SimpleCounterWorkflow
     {
         public int Counter { get; set; }
 
-        public void Next()
+        public void Ping()
         {
             Counter++;
         }

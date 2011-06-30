@@ -9,11 +9,11 @@ namespace Tests
         private WorkflowService _service;
         private const string SimpleWorkflowKey = "When_run_simple_workflow";
 
-        public class FooWorkflow : IWorkflow
+        public class FooWorkflow
         {
             public int Executed { get; set; }
 
-            public void Next()
+            public void Ping()
             {
                 Executed++;
             }
@@ -23,8 +23,8 @@ namespace Tests
         public void Given_simple_workflow_runned_twice()
         {
             _service = new WorkflowService();
-            _service.Run<FooWorkflow>(SimpleWorkflowKey);
-            _service.Run<FooWorkflow>(SimpleWorkflowKey);
+            _service.Run<FooWorkflow>(SimpleWorkflowKey, x => x.Ping());
+            _service.Run<FooWorkflow>(SimpleWorkflowKey, x => x.Ping());
         }
 
         [Test]

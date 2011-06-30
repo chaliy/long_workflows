@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IWorkflow.cs" />
     <Compile Include="IWorkflowService.cs" />
     <Compile Include="IWorkflowStateStore.cs" />
     <Compile Include="MemoryWrorkflowStateStore.cs" />

@@ -15,21 +15,21 @@ namespace SampleApp
 
         private static void Session1(WorkflowService reg)
         {
-            reg.Run<PingForewer>("PingForewer");
-            reg.Run<PingForewer>("PingForewer");
+            reg.Run<PingForewerWorkflow>("PingForewer", x => x.Ping());
+            reg.Run<PingForewerWorkflow>("PingForewer", x => x.Ping());
         }
 
         private static void Session2(WorkflowService reg)
         {
-            reg.Run<PingForewer>("PingForewer");
+            reg.Run<PingForewerWorkflow>("PingForewer", x => x.Ping());
         }
     }
 
-    public class PingForewer : IWorkflow
+    public class PingForewerWorkflow
     {
         public int Counter { get; set; }
         
-        public void Next()
+        public void Ping()
         {
             Counter++;
             Console.WriteLine("Ping #{0}", Counter);
