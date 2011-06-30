@@ -12,6 +12,11 @@ namespace Lrw
             _conventions = conventions ?? new Conventions();
         }
 
+        public Conventions Conventions
+        {
+            get { return _conventions; }
+        }
+
         public void Run<T>(string key)
         {
             var instance = (T)_conventions.CreateInstance(typeof(T));
