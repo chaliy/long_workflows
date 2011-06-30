@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using System.Reflection;
 
 namespace Lrw
@@ -13,26 +13,25 @@ namespace Lrw
         }
 
         public void Run<T>(string key)
-            where T : IWorkflow
         {
             var instance = (T)_conventions.CreateInstance(typeof(T));
 
             RetrieveWorkflow(key, instance);
 
-            instance.Next();            
+            _conventions.InvokeNext(instance);
 
             StoreWorkflow(key, instance);
         }
 
-        private void RetrieveWorkflow<T>(string key, T instance) where T : IWorkflow
+        private void RetrieveWorkflow<T>(string key, T instance)
         {
             var state = _conventions.StateStore.Get(key) ?? new WorkflowState();
             var worflowType = typeof (T);
             foreach (var name in state.Keys)
             {
                 var prop = worflowType.GetProperty(name, BindingFlags.Public
-                                                         | BindingFlags.Instance | BindingFlags.SetProperty);
-                if (prop != null && prop.GetSetMethod() != null)
+                                                         | BindingFlags.Instance);
+                if (prop != null && prop.CanRead && prop.CanWrite)
                 {
                     prop.SetValue(instance, state[name], null);
                 }
@@ -44,9 +43,8 @@ namespace Lrw
             var worflowType = typeof(T);
             var state = new WorkflowState();
             foreach (var prop in worflowType.GetProperties(BindingFlags.Public 
-                                                        | BindingFlags.Instance
-                                                        | BindingFlags.GetProperty
-                                                        | BindingFlags.SetProperty))
+                                                        | BindingFlags.Instance)
+                                            .Where(x => x.CanWrite && x.CanRead))
             {
                 state[prop.Name] = prop.GetValue(instance, null);
             }
