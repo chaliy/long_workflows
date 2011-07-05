@@ -4,6 +4,6 @@ namespace Lrw
 {
     public interface IWorkflowService
     {
-        void Run<T>(string key, Action<T> exe);
+        TRes Run<T, TRes>(string key, Func<T, TRes> exe, Action<T> init = null);
     }
 }

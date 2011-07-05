@@ -46,8 +46,10 @@
     <Compile Include="IWorkflowStateStore.cs" />
     <Compile Include="MemoryWrorkflowStateStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkflowBinder.cs" />
     <Compile Include="WorkflowService.cs" />
     <Compile Include="Conventions.cs" />
+    <Compile Include="WorkflowServiceExtensions.cs" />
     <Compile Include="WorkflowState.cs" />
   </ItemGroup>
   <ItemGroup>

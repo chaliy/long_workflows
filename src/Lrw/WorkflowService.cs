@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
@@ -18,29 +19,30 @@ namespace Lrw
             get { return _conventions; }
         }
 
-        public void Run<T>(string key, Action<T> exe)
+        public TRes Run<T, TRes>(string key, Func<T, TRes> exe, Action<T> init = null)
         {
             var instance = (T)_conventions.CreateInstance(typeof(T));
 
-            RetrieveWorkflow(key, instance);
+            RetrieveWorkflow(key, instance, init);
 
-            exe(instance);
+            var res = exe(instance);
 
             StoreWorkflow(key, instance);
+
+            return res;
         }
 
-        private void RetrieveWorkflow<T>(string key, T instance)
+        private void RetrieveWorkflow<T>(string key, T instance, Action<T> init)
         {
-            var state = _conventions.StateStore.Get(key) ?? new WorkflowState();
-            var worflowType = typeof (T);
-            foreach (var name in state.Keys)
+            var state = _conventions.StateStore.Get(key);
+
+            if (state == null)
             {
-                var prop = worflowType.GetProperty(name, BindingFlags.Public
-                                                         | BindingFlags.Instance);
-                if (prop != null && prop.CanRead && prop.CanWrite)
-                {
-                    prop.SetValue(instance, state[name], null);
-                }
+                init(instance);
+            }
+            else
+            {
+                new WorkflowBinder(instance).Bind(state);
             }
         }
 

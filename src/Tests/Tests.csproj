@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs\SimpleCounterWorkflow.cs" />
+    <Compile Include="When_bind_workflow_to_state.cs" />
     <Compile Include="When_run_simple_workflow.cs" />
   </ItemGroup>
   <ItemGroup>
