@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Long-running Workflows")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Small library with framework to build long-running or persistable workflows")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mike Chaliy")]
 [assembly: AssemblyProduct("Long-running Workflows")]
