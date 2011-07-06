@@ -1,8 +1,7 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace Lrw
+namespace LongWorkflows
 {
     public class WorkflowBinder
     {

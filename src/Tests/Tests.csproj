@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lrw\Lrw.csproj">
+    <ProjectReference Include="..\LongWorkflows\LongWorkflows.csproj">
       <Project>{7766725F-139C-48A8-9CDE-C6C6A5BA617C}</Project>
-      <Name>Lrw</Name>
+      <Name>LongWorkflows</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

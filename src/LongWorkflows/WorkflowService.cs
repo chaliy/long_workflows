@@ -1,9 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Lrw
+namespace LongWorkflows
 {
     public class WorkflowService : IWorkflowService
     {

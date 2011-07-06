@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
-using Lrw;
+using LongWorkflows;
 using NUnit.Framework;
 using FluentAssertions;
 

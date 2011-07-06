@@ -8,8 +8,8 @@
     <ProjectGuid>{7766725F-139C-48A8-9CDE-C6C6A5BA617C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lrw</RootNamespace>
-    <AssemblyName>Lrw</AssemblyName>
+    <RootNamespace>LongWorkflows</RootNamespace>
+    <AssemblyName>LongWorkflows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

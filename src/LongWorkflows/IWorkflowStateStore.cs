@@ -1,4 +1,4 @@
-﻿namespace Lrw
+﻿namespace LongWorkflows
 {
     public interface IWorkflowStateStore
     {

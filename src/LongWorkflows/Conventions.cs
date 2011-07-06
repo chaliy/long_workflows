@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lrw
+namespace LongWorkflows
 {
     public class Conventions
     {

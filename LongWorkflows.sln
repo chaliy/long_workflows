@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lrw", "src\Lrw\Lrw.csproj", "{7766725F-139C-48A8-9CDE-C6C6A5BA617C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongWorkflows", "src\LongWorkflows\LongWorkflows.csproj", "{7766725F-139C-48A8-9CDE-C6C6A5BA617C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "src\SampleApp\SampleApp.csproj", "{2D61E11B-0C41-4D77-81C8-902E80300D21}"
 EndProject

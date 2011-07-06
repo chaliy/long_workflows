@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Long-running Workflows")]
+[assembly: AssemblyTitle("LongWorkflows")]
 [assembly: AssemblyDescription("Small library with framework to build long-running or persistable workflows")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mike Chaliy")]
-[assembly: AssemblyProduct("Long-running Workflows")]
+[assembly: AssemblyProduct("LongWorkflows")]
 [assembly: AssemblyCopyright("Copyright © Mike Chaliy 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

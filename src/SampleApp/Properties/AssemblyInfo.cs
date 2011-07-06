@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mike Chaliy")]
-[assembly: AssemblyProduct("SampleApp")]
+[assembly: AssemblyProduct("LongWorkflows")]
 [assembly: AssemblyCopyright("Copyright © Mike Chaliy 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

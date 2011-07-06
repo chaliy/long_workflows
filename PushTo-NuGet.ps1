@@ -1,5 +1,5 @@
 # NuGet SetApiKey Your-API-Key
-NuGet pack .\src\Lrw\Lrw.csproj #-Symbols
+NuGet pack .\src\LongWorkflows\LongWorkflows.csproj #-Symbols
 
 gci *.nupkg | %{
 	Write-Host Push $_

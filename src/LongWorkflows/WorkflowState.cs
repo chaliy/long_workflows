@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Lrw
+namespace LongWorkflows
 {
     public class WorkflowState : Dictionary<string, object>
     {

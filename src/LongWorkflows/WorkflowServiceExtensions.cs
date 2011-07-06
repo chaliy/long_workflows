@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reactive;
 
-namespace Lrw
+namespace LongWorkflows
 {
     public static class WorkflowServiceExtensions
     {
