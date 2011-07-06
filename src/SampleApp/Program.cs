@@ -10,18 +10,20 @@ namespace SampleApp
             var reg = new WorkflowService();
 
             Session1(reg);
-            Session2(reg);
-        }
+            Session2(reg);            
+        }        
 
         private static void Session1(WorkflowService reg)
         {
-            reg.Run<PingForewerWorkflow>("PingForewer", x => x.Ping());
-            reg.Run<PingForewerWorkflow>("PingForewer", x => x.Ping());
+            var instance = reg.Get<PingForewerWorkflow>("PingForewer");
+            instance.Ping();
+            instance.Ping();            
         }
 
         private static void Session2(WorkflowService reg)
         {
-            reg.Run<PingForewerWorkflow>("PingForewer", x => x.Ping());
+            var instance = reg.Get<PingForewerWorkflow>("PingForewer");
+            instance.Ping();
         }
     }
 
@@ -29,7 +31,7 @@ namespace SampleApp
     {
         public int Counter { get; set; }
         
-        public void Ping()
+        public virtual void Ping()
         {
             Counter++;
             Console.WriteLine("Ping #{0}", Counter);

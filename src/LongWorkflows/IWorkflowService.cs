@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace LongWorkflows
+﻿namespace LongWorkflows
 {
     public interface IWorkflowService
     {
-        TRes Run<T, TRes>(string key, Func<T, TRes> exe, Action<T> init = null);
+        T Get<T>(string key) where T : class;
     }
 }

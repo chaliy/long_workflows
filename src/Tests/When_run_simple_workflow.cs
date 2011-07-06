@@ -13,7 +13,7 @@ namespace Tests
         {
             public int Executed { get; set; }
 
-            public void Ping()
+            public virtual void Ping()
             {
                 Executed++;
             }
@@ -23,8 +23,11 @@ namespace Tests
         public void Given_simple_workflow_runned_twice()
         {
             _service = new WorkflowService();
-            _service.Run<FooWorkflow>(SimpleWorkflowKey, x => x.Ping());
-            _service.Run<FooWorkflow>(SimpleWorkflowKey, x => x.Ping());
+            var instance1 = _service.Get<FooWorkflow>(SimpleWorkflowKey);
+            instance1.Ping();
+
+            var instance2 = _service.Get<FooWorkflow>(SimpleWorkflowKey);
+            instance2.Ping();
         }
 
         [Test]

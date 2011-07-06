@@ -4,7 +4,7 @@
     {
         public int Counter { get; set; }
 
-        public void Ping()
+        public virtual void Ping()
         {
             Counter++;
         }

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Castle.DynamicProxy;
 
 namespace LongWorkflows
 {
     public class WorkflowService : IWorkflowService
     {
         private readonly Conventions _conventions;
+        private readonly ProxyGenerator _generator = new ProxyGenerator();
         
         public WorkflowService(Conventions conventions = null)
         {
@@ -17,27 +19,28 @@ namespace LongWorkflows
         {
             get { return _conventions; }
         }
-
-        public TRes Run<T, TRes>(string key, Func<T, TRes> exe, Action<T> init = null)
+        
+        public T Get<T>(string key) where T : class
         {
             var instance = (T)_conventions.CreateInstance(typeof(T));
 
-            RetrieveWorkflow(key, instance, init);
+            RetrieveWorkflow(key, instance, null);
 
-            var res = exe(instance);
-
-            StoreWorkflow(key, instance);
-
-            return res;
+            var interceptor = new NotifyChangesInterceptor(() => StoreWorkflow(key, instance)); 
+            
+            return _generator.CreateClassProxyWithTarget(instance, interceptor);
         }
-
+        
         private void RetrieveWorkflow<T>(string key, T instance, Action<T> init)
         {
             var state = _conventions.StateStore.Get(key);
 
             if (state == null)
             {
-                init(instance);
+                if (init != null)
+                {
+                    init(instance);
+                }
             }
             else
             {
@@ -56,6 +59,22 @@ namespace LongWorkflows
                 state[prop.Name] = prop.GetValue(instance, null);
             }
             _conventions.StateStore.Store(key, state);
+        }
+
+        private class NotifyChangesInterceptor : IInterceptor
+        {
+            private readonly Action _changed;
+
+            public NotifyChangesInterceptor(Action changed)
+            {
+                _changed = changed;
+            }
+
+            public void Intercept(IInvocation invocation)
+            {                
+                invocation.Proceed();
+                _changed();
+            }
         }
     }
 }
