@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_run_simple_workflow_with_crash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs\SimpleCounterWorkflow.cs" />
     <Compile Include="When_bind_workflow_to_state.cs" />

@@ -7,6 +7,6 @@
         public virtual void Ping()
         {
             Counter++;
-        }
+        }        
     }
 }
